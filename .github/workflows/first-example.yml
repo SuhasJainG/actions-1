@@ -3,17 +3,15 @@ name: My First workflow
 on: push
 
 jobs:
-    first_job:
-        runs-on: ubuntu-latest
-        steps:
+  first_job:
+    runs-on: ubuntu-latest
+      steps:
         - name: Checkout
           uses: actions/checkout@v7
-          
-        - name: Welcome messege
-          run: echo "Welcome to actions"
-        
-        - name: List files
-          run: ls
 
-        - name: read files
-          run: cat README.md
+        - name: Welcome messege
+          run: |
+            echo "Welcome to actions"
+            ls -ltra
+            cat README.md
+          
