@@ -3,7 +3,7 @@ name: Generate ASCI
 on: push
 
 jobs:
-  build_job: Cowsay setup and build
+  build_job: 
     runs-on: ubuntu-latest
     steps:
     - name: install
@@ -18,7 +18,7 @@ jobs:
         name: dragon-text-file
         path: dragon.txt
 
-  test_job: Cowsay setup and build
+  test_job: 
     needs: build_job
     runs-on: ubuntu-latest
     steps:
@@ -30,7 +30,7 @@ jobs:
     - name: check
       run: grep -i "dragon" dragon.txt
 
-  deploy_job: Deploy
+  deploy_job: 
     needs: test_job
     runs-on: ubuntu-latest
     steps:
