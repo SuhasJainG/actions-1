@@ -1,8 +1,8 @@
 name: Matrix Configuration
 
-on: 
-  push: 
-  workflow_dispatch: 
+on:
+  push:
+  workflow_dispatch:
 
 jobs:
   deploy:
@@ -11,19 +11,18 @@ jobs:
       max-parallel: 2
       matrix:
         os: [ubuntu-latest, windows-latest]
-        images: [hello-world,alpine]
+        images: [hello-world, alpine]
         exclude:
           - images: alpine
           - os: windows-latest
-
         include:
-          - images: amd64/alpine
           - os: ubuntu-20.04
+            images: amd64/alpine
 
-    runs-on: ${matrix.os}
+    runs-on: ${{ matrix.os }}
     steps:
       - name: Echo docker info
         run: docker info
 
-      - name: Run docker {matrix.images}
-        run: docker run {matrix.images}
+      - name: Run docker ${{ matrix.images }}
+        run: docker run ${{ matrix.images }}
